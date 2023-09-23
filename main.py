@@ -34,8 +34,8 @@ class DistanceConverter(tk.Tk):
 
     def show_frame(self, container):
         frame = self.frames[container]
-        self.bind("<<Return>>", frame.calculate())
-        self.bind("<<KP_Enter>>", frame.calculate())
+        self.bind("<Return>", frame.calculate)
+        self.bind("<KP_Enter>", frame.calculate)
         frame.tkraise()
 
 
@@ -112,7 +112,9 @@ class FeetToMeters(ttk.Frame):
 root = DistanceConverter()
 root.columnconfigure(0, weight=1)
 root.rowconfigure(0, weight=1)
-# # change the font
-# font.nametofont("TkDefaultFont").configure(size=10)
+
+# set the Azure theme
+root.tk.call("source", "azure.tcl")
+root.tk.call("set_theme", "light")
 
 root.mainloop()
